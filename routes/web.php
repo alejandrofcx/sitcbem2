@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AfiliadosController;
 use App\Http\Controllers\CentrosTrabajoController;
+use App\Http\Controllers\CoordinacionesController;
 
 
 /*

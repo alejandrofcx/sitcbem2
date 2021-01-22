@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\CentroTrabajo;
+use App\Coordinacion;
 
 class CentrosTrabajoController extends Controller
 {

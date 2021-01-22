@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Afiliado;
 use App\CentroTrabajo;
+use App\Estado;
 
 
 class AfiliadosController extends Controller
@@ -14,7 +15,7 @@ class AfiliadosController extends Controller
   {
       $this->middleware('auth');
   }
-  
+
   public function agregarAfiliado(){
 
         $centrosTrabajo = CentroTrabajo::all();
