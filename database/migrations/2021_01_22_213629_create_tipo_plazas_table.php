@@ -15,6 +15,8 @@ class CreateTipoPlazasTable extends Migration
     {
         Schema::create('tipo_plazas', function (Blueprint $table) {
             $table->id();
+            $table->String('Nombre',45);
+            $table->String('Descripcion',45);
             $table->timestamps();
         });
     }

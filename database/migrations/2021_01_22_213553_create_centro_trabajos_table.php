@@ -14,8 +14,11 @@ class CreateCentroTrabajosTable extends Migration
     public function up()
     {
         Schema::create('centro_trabajos', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+          $table->id();
+          $table->string('Nombre',45);
+          $table->string('Telefono',13);
+          $table->integer('CoordinacionID');
+          $table->timestamps();
         });
     }
 
