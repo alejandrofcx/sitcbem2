@@ -32,19 +32,8 @@
           @endif
        @endforeach
   </select>
-  
-  <div class="form-group mb-2">
-     <label for="coordinacion">Coordinaciones</label>
-     <select class="form-control" id="coordinacion" name="CoordinacionID">
-          <option>{{$coordi->Nombre}}</option>
-         @foreach ($coordinaciones as $coordinacion)
-         @if ($coordinacion->id!=$coordi->id)
-         <option>{{$coordinacion->Nombre}}</option>
-         @endif
-         @endforeach
-      </select>
 
-  </div>
+</div>
 
   <button class="btn btn-primary btn-block" type="submit">Agregar</button>
 </form>
