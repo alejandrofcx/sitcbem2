@@ -7,6 +7,11 @@ use App\Coordinacion;
 
 class CoordinacionesController extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
+  
   public function agregarCoordinacion(){
     return view('Coordinaciones.agregarCoordinacion');
   }

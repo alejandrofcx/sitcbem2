@@ -27,7 +27,9 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{{ route('afiliados.mostrar') }}">Ver Afiliados</a>
+            @if((Auth::user()->hasRole('admin'))||(Auth::user()->hasRole('operador')))
           <a class="dropdown-item" href="{{ route('afiliado.agregar') }}">Agregar Afiliado</a>
+            @endif
         </div>
       </li>
 
@@ -37,7 +39,9 @@
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="{{ route('centrosTrabajo.mostrar') }}">Ver Centros de Trabajo</a>
-        <a class="dropdown-item" href="{{ route('centroTrabajo.agregar') }}">Agregar Centro de Trabajo</a>
+        @if((Auth::user()->hasRole('admin')) || (Auth::user()->hasRole('operador')))
+          <a class="dropdown-item" href="{{ route('centroTrabajo.agregar') }}">Agregar Centro de Trabajo</a>
+        @endif
       </div>
     </li>
 
@@ -47,7 +51,9 @@
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
       <a class="dropdown-item" href="{{ route('coordinaciones.mostrar') }}">Ver Coordinaciones</a>
-      <a class="dropdown-item" href="{{ route('coordinacion.agregar') }}">Agregar Coordinacion</a>
+      @if((Auth::user()->hasRole('admin')) || (Auth::user()->hasRole('operador')))
+        <a class="dropdown-item" href="{{ route('coordinacion.agregar') }}">Agregar Coordinacion</a>
+      @endif
     </div>
   </li>
 
@@ -88,7 +94,13 @@
     </div>
   </nav>
     <div class="container mt-3 p-4 bg-light">
-
+      @if(Auth::user()->hasRole('admin'))
+      <div>Acceso como administrador</div>
+      @elseif(Auth::user()->hasRole('secretario'))
+        <div>Acceso Secretario</div>
+      @elseif(Auth::user()->hasRole('operador'))
+        <div>Acceso Operador</div>
+      @endif
       @yield('master')
     </div>
     <!-- Optional JavaScript -->

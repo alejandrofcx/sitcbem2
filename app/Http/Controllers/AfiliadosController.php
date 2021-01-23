@@ -16,8 +16,8 @@ class AfiliadosController extends Controller
       $this->middleware('auth');
   }
 
-  public function agregarAfiliado(){
-
+  public function agregarAfiliado(Request $request){
+        $request->user()->authorizeRoles(['operador', 'admin']);
         $centrosTrabajo = CentroTrabajo::all();
         $estados = Estado::all();
 
@@ -26,6 +26,7 @@ class AfiliadosController extends Controller
       }
 
       public function insertarAfiliado(Request $request){
+        $request->user()->authorizeRoles(['operador', 'admin']);
         $nuevoAfiliado = new Afiliado;
         $nuevoAfiliado->Nombre = $request->Nombre;
         $nuevoAfiliado->ApellidoP = $request->ApellidoP;
@@ -54,22 +55,21 @@ class AfiliadosController extends Controller
       }
 
       public function mostrarAfiliados(Request $request){
-        $request->user()->authorizeRoles(['user', 'admin']);
-
          $afiliados = Afiliado::all();
          $centrosTrabajo = CentroTrabajo::all();
 
          return view('Afiliados.verAfiliados', compact('afiliados','centrosTrabajo'));
        }
 
-      public function eliminarAfiliado($id){
-
+      public function eliminarAfiliado(Request $request,$id){
+        $request->user()->authorizeRoles(['operador', 'admin']);
         $afiliadoEliminar = Afiliado::findOrFail($id)->delete();
 
         return back()->with('mensaje', 'Afiliado Eliminado');
       }
 
-      public function editarAfiliado($id){
+      public function editarAfiliado(Request $request,$id){
+        $request->user()->authorizeRoles(['operador', 'admin']);
         $afiliado = Afiliado::findOrFail($id);
         $centrosTrabajo = CentroTrabajo::all();
         $estados = Estado::all();
@@ -78,6 +78,7 @@ class AfiliadosController extends Controller
       }
 
       public function updateAfiliado(Request $request , $id){
+        $request->user()->authorizeRoles(['operador', 'admin']);
         $Afiliado = Afiliado::findOrFail($id);
         $Afiliado->Nombre = $request->Nombre;
         $Afiliado->ApellidoP = $request->ApellidoP;

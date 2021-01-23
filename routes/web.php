@@ -23,7 +23,7 @@ use App\Http\Controllers\CoordinacionesController;
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', [AfiliadosController::class,'mostrarAfiliados'])->name('home');
 
 Route::get('/',[AfiliadosController::class,'mostrarAfiliados']);
 

@@ -8,6 +8,13 @@ use App\Coordinacion;
 
 class CentrosTrabajoController extends Controller
 {
+
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
+
+  
   public function agregarCentroTrabajo(){
       $coordinaciones = Coordinacion::all();
 
