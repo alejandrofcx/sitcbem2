@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class UsuariosController extends Controller
@@ -11,9 +12,10 @@ class UsuariosController extends Controller
   {
       $this->middleware('auth');
   }
-  
-    public function mostrarUsuarios(Request $request){
-        
-        return view('Usuarios.verUsuarios');
-      }
+
+  public function mostrarUsuarios(Request $request){
+    $usuarios = User::all();
+
+    return view('Usuarios.verUsuarios', compact('usuarios'));
+  }
 }
