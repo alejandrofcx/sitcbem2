@@ -22,40 +22,52 @@
       <ul class="navbar-nav">
 
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Afiliados
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{{ route('afiliados.mostrar') }}">Ver Afiliados</a>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Usuarios
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ route('usuario.mostrar') }}">Ver Usuarios</a>
             @if((Auth::user()->hasRole('admin'))||(Auth::user()->hasRole('operador')))
-          <a class="dropdown-item" href="{{ route('afiliado.agregar') }}">Agregar Afiliado</a>
+              <a class="dropdown-item" href="{{ route('usuario.mostrar') }}">Agregar Usuario</a>
             @endif
-        </div>
-      </li>
+          </div>
+        </li>
 
-      <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Centros de Trabajo
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="{{ route('centrosTrabajo.mostrar') }}">Ver Centros de Trabajo</a>
-        @if((Auth::user()->hasRole('admin')) || (Auth::user()->hasRole('operador')))
-          <a class="dropdown-item" href="{{ route('centroTrabajo.agregar') }}">Agregar Centro de Trabajo</a>
-        @endif
-      </div>
-    </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Afiliados
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ route('afiliados.mostrar') }}">Ver Afiliados</a>
+            @if((Auth::user()->hasRole('admin'))||(Auth::user()->hasRole('operador')))
+              <a class="dropdown-item" href="{{ route('afiliado.agregar') }}">Agregar Afiliado</a>
+            @endif
+          </div>
+        </li>
 
-    <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Coordinaciones
-    </a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      <a class="dropdown-item" href="{{ route('coordinaciones.mostrar') }}">Ver Coordinaciones</a>
-      @if((Auth::user()->hasRole('admin')) || (Auth::user()->hasRole('operador')))
-        <a class="dropdown-item" href="{{ route('coordinacion.agregar') }}">Agregar Coordinacion</a>
-      @endif
-    </div>
-  </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Centros de Trabajo
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ route('centrosTrabajo.mostrar') }}">Ver Centros de Trabajo</a>
+            @if((Auth::user()->hasRole('admin')) || (Auth::user()->hasRole('operador')))
+              <a class="dropdown-item" href="{{ route('centroTrabajo.agregar') }}">Agregar Centro de Trabajo</a>
+            @endif
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Coordinaciones
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ route('coordinaciones.mostrar') }}">Ver Coordinaciones</a>
+            @if((Auth::user()->hasRole('admin')) || (Auth::user()->hasRole('operador')))
+              <a class="dropdown-item" href="{{ route('coordinacion.agregar') }}">Agregar Coordinacion</a>
+            @endif
+          </div>
+        </li>
 
       </ul>
 

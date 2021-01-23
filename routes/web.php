@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AfiliadosController;
 use App\Http\Controllers\CentrosTrabajoController;
 use App\Http\Controllers\CoordinacionesController;
+use App\Http\Controllers\UsuariosController;
 
 
 /*
@@ -67,3 +68,8 @@ Route::delete('/eliminarCoordinacion/{id}', [CoordinacionesController::class,'el
 Route::get('/editarCoordinacion/{id}', [CoordinacionesController::class,'editarCoordinacion'])->name('coordinacion.editar');
 
 Route::put('/editarCoordinacion/{id}', [CoordinacionesController::class,'updateCoordinacion'])->name('coordinacion.update');
+
+
+//Usuarios
+
+Route::get('/verUsuario', [UsuariosController::class,'mostrarUsuarios'])->name('usuario.mostrar');
