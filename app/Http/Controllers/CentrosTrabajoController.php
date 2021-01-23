@@ -22,6 +22,7 @@ class CentrosTrabajoController extends Controller
     }
 
     public function insertarCentroTrabajo(Request $request){
+      $request->user()->authorizeRoles(['operador', 'admin']);
       $centroTrabajo = new CentroTrabajo;
       $centroTrabajo->Nombre = $request->Nombre;
       $centroTrabajo->Telefono = $request->Telefono;
@@ -33,20 +34,20 @@ class CentrosTrabajoController extends Controller
     }
 
     public function mostrarCentrosTrabajo(){
-
        $centros = CentroTrabajo::all();
        $Coordinacionx = Coordinacion::all();
        return view('CentrosTrabajo.verCentrosTrabajo', compact('centros','Coordinacionx'));
      }
 
      public function eliminarCentroTrabajo($id){
-
+      $request->user()->authorizeRoles(['admin']);
        $centrooEliminar = CentroTrabajo::findOrFail($id)->delete();
 
        return back()->with('mensaje', 'Centro Eliminado');
      }
 
      public function editarCentroTrabajo($id){
+      $request->user()->authorizeRoles(['operador', 'admin']);
       $centro = CentroTrabajo::findOrFail($id);
       $coordi = Coordinacion::findOrFail($centro->CoordinacionID);
       $coordinaciones = Coordinacion::all();
@@ -55,6 +56,7 @@ class CentrosTrabajoController extends Controller
     }
 
      public function updateCentroTrabajo(Request $request , $id){
+      $request->user()->authorizeRoles(['operador', 'admin']);
        $centroTrabajo = CentroTrabajo::findOrFail($id);
        $centroTrabajo->Nombre = $request->Nombre;
        $centroTrabajo->Telefono = $request->Telefono;

@@ -7,7 +7,9 @@
       <th scope="col">Nombre</th>
       <th scope="col">Telefono</th>
       <th scope="col">Coordinacion</th>
+      @if((Auth::user()->hasRole('admin')) || (Auth::user()->hasRole('operador')))
       <th scope="col">Acciones</th>
+      @endif
     </tr>
   </thead>
   <tbody>

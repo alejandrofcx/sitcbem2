@@ -17,6 +17,7 @@ class CoordinacionesController extends Controller
   }
 
   public function insertarCoordinacion(Request $request){
+    $request->user()->authorizeRoles(['operador', 'admin']);
     $coordinacion = new Coordinacion;
     $coordinacion->Nombre = $request->Nombre;
     $coordinacion->Telefono = $request->Telefono;
@@ -33,18 +34,19 @@ class CoordinacionesController extends Controller
    }
 
    public function eliminarCoordinacion($id){
-
+     $request->user()->authorizeRoles(['admin']);
      $coordinacionEliminar = Coordinacion::findOrFail($id)->delete();
-
      return back()->with('mensaje', 'Coordinacion Eliminada');
    }
 
    public function editarCoordinacion($id){
+     $request->user()->authorizeRoles(['operador', 'admin']);
      $coordinacion = Coordinacion::findOrFail($id);
      return view('Coordinaciones.editarCoordinacion', compact('coordinacion'));
    }
 
    public function updateCoordinacion(Request $request , $id){
+    $request->user()->authorizeRoles(['operador', 'admin']);
      $coordinacion = Coordinacion::findOrFail($id);
      $coordinacion->Nombre = $request->Nombre;
      $coordinacion->Telefono = $request->Telefono;
